@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include <windows.h>
+#include <Windows.h>
 #include <string>
 
 using std::cout;
@@ -32,13 +32,9 @@ class Chess {
 	void doTurn();
 
 public:
-	explicit Chess(const string& start = "RNBQKBNRPPPPPPPP################################pppppppprnbqkbnr");
+	Chess(const string& start = "RNBQKBNRPPPPPPPP################################pppppppprnbqkbnr");
 	Chess(const Chess&)=delete;
 	Chess& operator=(const Chess&) = delete;
 	string getInput();
 	void setCodeResponse(int codeResponse);
-    char GetPieceAt(int row, int col) const;
-    bool ReturnTurn() const {return m_turn;};
-    void SetBoard(std::pair<int,int> cord,char col) {m_board[cord.first][cord.second] = col;}
-
 };

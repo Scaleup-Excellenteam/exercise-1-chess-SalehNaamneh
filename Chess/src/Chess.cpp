@@ -1,4 +1,4 @@
-#include "../include/Chess.h"
+	#include "Chess.h"
 
 // clear the screen "cls"
 void Chess::clear() const 
@@ -129,8 +129,8 @@ bool Chess::isValid() const
 {
 	return ((('A' <= m_input[0]) && (m_input[0] <= 'H')) || (('a' <= m_input[0]) && (m_input[0] <= 'h')) &&
 		(('1' <= m_input[1]) && (m_input[1] <= '8')) &&
-		(('A' <= m_input[3]) && (m_input[3] <= 'H')) || (('a' <= m_input[2]) && (m_input[2] <= 'h')) &&
-		(('1' <= m_input[4]) && (m_input[4] <= '8')));
+		(('A' <= m_input[2]) && (m_input[2] <= 'H')) || (('a' <= m_input[2]) && (m_input[2] <= 'h')) &&
+		(('1' <= m_input[3]) && (m_input[3] <= '8')));
 }
 	
 // check if the input is exit or quit  
@@ -146,8 +146,8 @@ void Chess::excute()
 	char pieceInSource = m_boardString[(row * 8) + col]; 
 	m_boardString[(row * 8) + col] = '#'; 
 
-	row = (m_input[3] - 'A');
-	col = (m_input[4] - '1');
+	row = (m_input[2] - 'a');
+	col = (m_input[3] - '1');
 	m_boardString[(row * 8) + col] = pieceInSource; 
 
 	setPieces(); 
@@ -220,7 +220,8 @@ string Chess::getInput()
 
 	displayBoard();
 	showAskInput();
-    std::getline(cin,m_input);
+
+	cin >> m_input;
 	if (isExit())
 		return "exit";
 	while (!isValid() || isSame())
@@ -253,8 +254,4 @@ void Chess::setCodeResponse(int codeResponse)
 		((21 == codeResponse) || (codeResponse == 31)) ||
 		((41 == codeResponse) || (codeResponse == 42)))
 		m_codeResponse = codeResponse;
-}
-
-char Chess::GetPieceAt(int row,int col) const {
-    return m_board[row][col];
 }
